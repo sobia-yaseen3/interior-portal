@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LuxeInteriors | Dubai's Finest Design</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'metallic-gold': '#D4AF37',
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    .glass {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .hero-overlay {
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.3), rgba(15, 23, 42, 1));
+    }
+    .gallery-card:hover img {
+      transform: scale(1.1);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-white font-sans selection:bg-metallic-gold selection:text-slate-900">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full z-50 glass px-6 py-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold tracking-tighter text-metallic-gold">LUXE<span class="text-white">INTERIORS</span></a>
+      <div class="hidden md:flex space-x-8 font-medium">
+        <a href="#hero" class="hover:text-metallic-gold transition">Home</a>
+        <a href="#gallery" class="hover:text-metallic-gold transition">Portfolio</a>
+        <a href="#contact" class="hover:text-metallic-gold transition">Contact</a>
+      </div>
+      <button id="mobile-btn" class="md:hidden text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+    </div>
+  </nav>
+  <!-- Hero Section -->
+<!-- Hero Section -->
+<section id="hero" class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+  <!-- Background Image -->
+  <img src="interior8.jpg" 
+       class="absolute inset-0 w-full h-full object-cover z-0" alt="Luxury Interior">
+  
+  <!-- SOFT RADIAL OVERLAY: Darker in the center to make text pop, clearer at the edges -->
+  <div class="absolute inset-0 z-10 bg-gradient-to-b from-slate-950/40 via-slate-950/60 to-slate-950/80"></div>
+
+  <div class="container mx-auto relative z-20 px-6 text-center">
+    <!-- Max-width prevents the text from stretching too far across the screen -->
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
+        Crafting <span class="text-metallic-gold">Timeless</span> <br> Elegance in Dubai
+      </h1>
+      <p class="text-lg md:text-xl text-gray-200 mb-10 leading-relaxed">
+        Bespoke interior architecture that blends modern luxury <br class="hidden md:block"> with absolute functionality.
+      </p>
+      <a href="#gallery" class="px-8 py-3 bg-metallic-gold text-slate-900 font-bold rounded-full hover:scale-105 transition transform shadow-xl shadow-metallic-gold/20 inline-block">
+        Explore Portfolio
+      </a>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="py-24 bg-slate-950">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Our <span class="text-metallic-gold">Masterpieces</span></h2>
+        <div class="h-1 w-20 bg-metallic-gold mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Image 1 -->
+        <div class="gallery-card relative overflow-hidden rounded-2xl cursor-pointer group" onclick="openModal('interior1.jfif')">
+          <img src="interior5.jfif" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+            <span class="text-white font-bold border border-white px-4 py-2 rounded-full">View Project</span>
+          </div>
+        </div>
+        <!-- Image 2 -->
+        <div class="gallery-card relative overflow-hidden rounded-2xl cursor-pointer group" onclick="openModal('interior2.jfif')">
+          <img src="interior3.jfif" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+            <span class="text-white font-bold border border-white px-4 py-2 rounded-full">View Project</span>
+          </div>
+        </div>
+        <!-- Image 3 -->
+        <div class="gallery-card relative overflow-hidden rounded-2xl cursor-pointer group" onclick="openModal('interior3.jfif')">
+          <img src="interior4.jfif" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+            <span class="text-white font-bold border border-white px-4 py-2 rounded-full">View Project</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 bg-slate-900">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto glass p-12 rounded-3xl border border-white/10">
+        <h2 class="text-4xl font-bold text-center mb-10">Start Your <span class="text-metallic-gold">Transformation</span></h2>
+        <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <input type="text" placeholder="Your Name" class="bg-white/5 border border-white/10 p-4 rounded-xl text-white focus:border-metallic-gold outline-none" required>
+          <input type="email" placeholder="Your Email" class="bg-white/5 border border-white/10 p-4 rounded-xl text-white focus:border-metallic-gold outline-none" required>
+          <textarea placeholder="Tell us about your dream space..." class="md:col-span-2 bg-white/5 border border-white/10 p-4 rounded-xl text-white h-32 focus:border-metallic-gold outline-none" required></textarea>
+          <button class="md:col-span-2 py-4 bg-metallic-gold text-slate-900 font-bold rounded-xl hover:bg-yellow-500 transition">Send Request</button>
+        </form>
+        <div id="success" class="hidden text-center text-green-400 mt-4 font-bold">Message sent successfully!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="modal" class="modal">
+    <span class="absolute top-5 right-5 text-white text-4xl cursor-pointer" onclick="closeModal()">&times;</span>
+    <img id="modal-img" src="interior4.jfif" class="max-w-[90%] max-h-[90vh] rounded-lg shadow-2xl">
+  </div>
+
+  <script>
+    // Modal Logic
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+
+    function openModal(url) {
+      modal.style.display = 'flex';
+      modalImg.src = url;
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    // Close modal on background click
+    window.onclick = (event) => {
+      if (event.target == modal) closeModal();
+    }
+
+    // Form Submission
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.getElementById('success').classList.remove('hidden');
+      setTimeout(() => {
+        document.getElementById('success').classList.add('hidden');
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>
